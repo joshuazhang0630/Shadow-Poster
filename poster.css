@@ -87,7 +87,7 @@ p + p { margin-top: 6px; }
 }
 
 .poster-wrap {
-  transform-origin: top center; /* JS sets transform: scale(...) */
+  transform-origin: top left; /* JS sets transform: scale(...) and matching width */
 }
 
 /* The actual poster at print size. */
@@ -643,9 +643,17 @@ p + p { margin-top: 6px; }
 @media print {
   @page { size: 36in 48in; margin: 0; }
 
-  html, body { background: #fff; }
+  html, body { background: #fff; width: 36in; height: 48in; }
 
-  .stage { padding: 0; min-height: auto; }
+  .stage { padding: 0; min-height: auto; display: block; }
   .poster { box-shadow: none; }
-  .poster-wrap { transform: none !important; }
+
+  /* Poster canvas is 1440 × 1920 px (15 × 20 in @ 96dpi).
+     Scale up by 2.4 so it fills the 36 × 48 in page exactly. */
+  .poster-wrap {
+    transform: scale(2.4) !important;
+    transform-origin: top left !important;
+    width: 1440px !important;
+    height: 1920px !important;
+  }
 }
