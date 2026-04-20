@@ -643,6 +643,13 @@ p + p { margin-top: 6px; }
 @media print {
   @page { size: 36in 48in; margin: 0; }
 
+  /* Preserve background colors and background-images (e.g. .intro__shot,
+     panel fills, accent chips). Without this, browsers strip them to save ink. */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
   html, body { background: #fff; width: 36in; height: 48in; }
 
   .stage { padding: 0; min-height: auto; display: block; }
