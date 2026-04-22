@@ -1153,4 +1153,13 @@ html, body {
     overflow: hidden !important;
   }
 
+  /* Footer team names render slightly taller in Chrome's print pipeline,
+     pushing the third name (e.g. "Daoping Huang") below the poster's
+     bottom edge. Shrink the team text block so all three names fit. */
+  .team .n {
+    font-size: 10px !important;
+    line-height: 1.3 !important;
+  }
+  .team .k { font-size: 9px !important; margin-bottom: 2px !important; }
+  .team .r { font-size: 8px !important; margin-bottom: 3px !important; }
 }
