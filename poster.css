@@ -760,18 +760,9 @@ html, body {
   letter-spacing: 1.2px;
   text-transform: uppercase;
   line-height: 1.8;
-  border: 1px solid rgba(212,168,74,0.32);
-  background: linear-gradient(180deg, rgba(24,14,8,0.5), rgba(14,10,8,0.35));
   padding: 14px 16px 16px;
   position: relative;
   min-width: 200px;
-}
-.course::before {
-  content: "";
-  position: absolute;
-  inset: 3px;
-  border: 1px solid rgba(212,168,74,0.14);
-  pointer-events: none;
 }
 .course-seal {
   font-family: var(--serif);
