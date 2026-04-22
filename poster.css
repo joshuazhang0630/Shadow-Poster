@@ -1,0 +1,1114 @@
+/* ==========================================================================
+   Shadow — Grimdark Game Poster (v2)
+   48 × 36 in landscape · midnight + soul-shard purple + warm gold
+   ========================================================================== */
+
+
+/* ---------- 1. Design tokens ---------- */
+:root {
+  /* Midnight base */
+  --night-0:   #05060a;
+  --night-1:   #0a0d15;
+  --night-2:   #121724;
+  --night-3:   #1d2335;
+  --mist:      #3a4158;
+  --ash:       #8b92a6;
+  --parchment: #d8cfb8;
+  --bone:      #efe6cd;
+
+  /* Soul Shard purple */
+  --soul:      #8b6bff;
+  --soul-deep: #4d3a9e;
+  --soul-glow: rgba(139, 107, 255, 0.35);
+
+  /* Warm gold (foil) */
+  --gold:      #d4a84a;
+  --gold-deep: #8a6a1e;
+  --gold-pale: #e8cd88;
+
+  /* Blood */
+  --blood:     #9b2a2a;
+  --blood-dark:#5e1818;
+
+  /* Type */
+  --display: "Archivo Black", "Space Grotesk", system-ui, sans-serif;
+  --heading: "Space Grotesk", system-ui, sans-serif;
+  --body:    "Space Grotesk", system-ui, sans-serif;
+  --serif:   "Cormorant Garamond", "EB Garamond", Georgia, serif;
+  --hand:    "Caveat", "Kalam", cursive;
+  --mono:    "JetBrains Mono", ui-monospace, monospace;
+}
+
+
+/* ---------- 2. Base ---------- */
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  background: #000;
+  color: var(--parchment);
+  font-family: var(--body);
+}
+
+
+/* ---------- 3. Stage ---------- */
+.stage {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 30px 20px;
+}
+.poster-wrap { transform-origin: top center; }
+
+.poster {
+  width: 1920px;
+  height: 1440px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 30px 120px rgba(0,0,0,0.9);
+  background: var(--night-1);
+  color: var(--parchment);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+
+/* ---------- 4. Background textures ---------- */
+.poster::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 90% 70% at 25% 40%, rgba(77,58,158,0.18), transparent 60%),
+    radial-gradient(ellipse 70% 60% at 85% 80%, rgba(212,168,74,0.10), transparent 60%),
+    radial-gradient(circle at 50% 50%, transparent 20%, var(--night-0) 110%);
+  pointer-events: none;
+  z-index: 0;
+}
+.poster::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.85   0 0 0 0 0.80   0 0 0 0 0.70   0 0 0 0.22 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 1;
+}
+.poster > * { position: relative; z-index: 2; }
+
+
+/* ---------- 5. Gold foil border ---------- */
+.foil-frame {
+  position: absolute;
+  inset: 24px;
+  border: 1px solid var(--gold-deep);
+  pointer-events: none;
+  z-index: 3;
+}
+.foil-frame::before,
+.foil-frame::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(212,168,74,0.25);
+}
+.corner-mark {
+  position: absolute;
+  width: 64px; height: 64px;
+  z-index: 4;
+  pointer-events: none;
+}
+.corner-mark path { fill: none; stroke: var(--gold); stroke-width: 1.5; }
+.corner-mark.tl { top: 20px;    left: 20px; }
+.corner-mark.tr { top: 20px;    right: 20px;  transform: scaleX(-1); }
+.corner-mark.bl { bottom: 20px; left: 20px;   transform: scaleY(-1); }
+.corner-mark.br { bottom: 20px; right: 20px;  transform: scale(-1,-1); }
+
+
+/* ---------- 6. Master grid ---------- */
+.layout {
+  position: absolute;
+  inset: 36px 48px 28px 48px;
+  display: grid;
+  grid-template-columns: 440px 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "hero   manifesto"
+    "hero   main"
+    "foot   foot";
+  gap: 16px 30px;
+}
+
+.manifesto-area { grid-area: manifesto; }
+
+.main {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1.15fr 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "blockA collage collage blockB"
+    "blockC collage collage blockD"
+    "blockE blockE  blockF  blockF";
+  gap: 14px 16px;
+  align-content: start;
+}
+.main .collage { grid-area: collage; }
+.main .b-a { grid-area: blockA; }
+.main .b-b { grid-area: blockB; }
+.main .b-c { grid-area: blockC; }
+.main .b-d { grid-area: blockD; }
+.main .b-e { grid-area: blockE; }
+.main .b-f { grid-area: blockF; }
+
+
+/* ---------- 7. Hero (left column) ---------- */
+.hero {
+  grid-area: hero;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.kicker::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--gold-deep), transparent);
+}
+
+.hero-title {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 108px;
+  line-height: 0.82;
+  letter-spacing: -3px;
+  color: var(--bone);
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow:
+    0 0 1px rgba(212,168,74,0.4),
+    0 3px 0 rgba(0,0,0,0.8),
+    0 0 60px rgba(139,107,255,0.08);
+}
+.hero-title .slash {
+  display: inline-block;
+  color: var(--soul);
+  transform: translate(-3px, 2px);
+  font-size: 84px;
+}
+
+.tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.2;
+  color: var(--bone);
+  letter-spacing: -0.3px;
+  max-width: 420px;
+  margin: 0;
+}
+.tagline em { color: var(--soul); font-style: italic; }
+
+.rule {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-deep) 20%, var(--gold) 50%, var(--gold-deep) 80%, transparent);
+  opacity: 0.7;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  margin-top: auto;
+}
+.facts > div {
+  padding: 12px 14px;
+  border-left: 1px solid var(--night-3);
+}
+.facts > div:first-child { border-left: none; padding-left: 0; }
+.facts .k {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin-bottom: 4px;
+}
+.facts .v {
+  font-family: var(--display);
+  font-size: 26px;
+  color: var(--bone);
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+.facts .u {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ash);
+  margin-left: 4px;
+  letter-spacing: 1px;
+}
+
+
+/* ---------- 8. Manifesto ---------- */
+.manifesto {
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--parchment);
+  max-width: 100%;
+}
+.manifesto::first-letter {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 0.85;
+  float: left;
+  margin: 4px 8px 0 0;
+  color: var(--gold);
+}
+.manifesto em { color: var(--soul); font-style: italic; }
+.manifesto b { color: var(--bone); font-weight: 600; }
+
+
+/* ---------- 9. Collage ---------- */
+.collage {
+  position: relative;
+  min-height: 470px;
+}
+.cell {
+  position: absolute;
+  background: var(--night-0);
+  border: 1px solid var(--night-3);
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.7),
+    0 2px 0 rgba(212,168,74,0.2);
+}
+.cell img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.05) contrast(1.05);
+}
+.cell .cap {
+  position: absolute;
+  left: 10px;
+  bottom: 8px;
+  padding: 4px 8px;
+  background: rgba(5,6,10,0.85);
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--gold-pale);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-left: 2px solid var(--gold);
+}
+
+.cell-hero {
+  top: 0; left: 0;
+  width: 78%; height: 70%;
+  transform: rotate(-1.2deg);
+  border: 2px solid var(--gold-deep);
+  z-index: 3;
+}
+.cell-b {
+  top: 8%; right: -4%;
+  width: 34%; height: 32%;
+  transform: rotate(3deg);
+  z-index: 2;
+}
+.cell-c {
+  bottom: 4%; right: 2%;
+  width: 44%; height: 45%;
+  transform: rotate(-2.2deg);
+  z-index: 4;
+}
+.cell-d {
+  bottom: -2%; left: 18%;
+  width: 28%; height: 36%;
+  transform: rotate(2.8deg);
+  z-index: 5;
+}
+
+.annotation {
+  position: absolute;
+  font-family: var(--hand);
+  font-size: 22px;
+  color: var(--gold-pale);
+  line-height: 1.1;
+  z-index: 10;
+  pointer-events: none;
+}
+.annotation .arrow { color: var(--blood); }
+.annotation small {
+  display: block;
+  font-size: 14px;
+  color: var(--ash);
+  font-family: var(--hand);
+}
+
+.parry-ring {
+  position: absolute;
+  border: 2px solid var(--blood);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9;
+  box-shadow:
+    0 0 0 2px rgba(155,42,42,0.2),
+    inset 0 0 30px rgba(155,42,42,0.15);
+}
+.parry-ring::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px dashed var(--blood);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+
+/* ---------- 10. Blocks ---------- */
+.block {
+  border-top: 1px solid var(--gold-deep);
+  padding-top: 10px;
+  position: relative;
+}
+.block::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: var(--gold);
+}
+.block-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.block-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 2px;
+}
+.block-title {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+  color: var(--bone);
+  text-transform: uppercase;
+  line-height: 1;
+}
+.block-sub {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ash);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.block p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--ash);
+}
+.block p + p { margin-top: 4px; }
+.block b { color: var(--bone); font-weight: 600; }
+.block em { color: var(--soul); font-style: italic; }
+
+
+/* ---------- Keys (action system) ---------- */
+.keys {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2px 8px;
+  margin-top: 8px;
+  align-items: center;
+}
+.keycap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  padding: 2px 6px;
+  background: linear-gradient(to bottom, #1d2335, #0a0d15);
+  border: 1px solid var(--gold-deep);
+  border-bottom-width: 2px;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--gold-pale);
+  letter-spacing: 0.5px;
+}
+.keycap.wide { min-width: 48px; }
+.keycap.mouse {
+  border-color: var(--soul-deep);
+  color: var(--soul);
+}
+.keys .lbl {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--parchment);
+  letter-spacing: 0.3px;
+  line-height: 1.3;
+}
+.keys .lbl b { color: var(--bone); }
+.keys .lbl small {
+  font-size: 9px;
+  color: var(--ash);
+  letter-spacing: 0.6px;
+  margin-left: 4px;
+}
+
+/* ---------- 11. Stats ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-top: 8px;
+}
+.stat {
+  padding: 6px 8px;
+  background: var(--night-2);
+  border: 1px solid var(--night-3);
+}
+.stat--accent {
+  border-color: var(--soul-deep);
+  background: linear-gradient(to bottom, rgba(139,107,255,0.12), var(--night-2));
+}
+.stat .k {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+.stat .v {
+  margin-top: 2px;
+  font-family: var(--display);
+  font-size: 18px;
+  line-height: 1;
+  color: var(--bone);
+}
+.stat--accent .v { color: var(--soul); }
+.stat .u {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ash);
+}
+
+
+/* ---------- 12. Rarity bar ---------- */
+.rarity {
+  margin-top: 10px;
+  display: grid;
+  gap: 6px;
+}
+.rarity-row {
+  display: grid;
+  grid-template-columns: 30px 1fr 90px;
+  gap: 10px;
+  align-items: center;
+}
+.rarity-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--gold);
+  font-weight: 700;
+}
+.rarity-bar {
+  display: flex;
+  height: 18px;
+  border: 1px solid var(--night-3);
+  background: var(--night-0);
+}
+.rarity-bar > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(0,0,0,0.7);
+}
+.t-common  { background: #6e7489; }
+.t-rare    { background: #5b7ec0; color: #fff; }
+.t-epic    { background: #8b6bff; color: #fff; }
+.t-legend  { background: var(--gold); color: #000; }
+.rarity-meta {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--mist);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+
+/* ---------- 13. Enemy pills ---------- */
+.enemy-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+.pill {
+  padding: 4px 10px;
+  background: var(--night-2);
+  border: 1px solid var(--night-3);
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--parchment);
+  letter-spacing: 0.5px;
+}
+.pill b { color: var(--bone); }
+.pill .hp { color: var(--gold); margin-left: 6px; }
+.pill--boss {
+  background: linear-gradient(to bottom, rgba(155,42,42,0.25), var(--night-2));
+  border-color: var(--blood);
+  color: var(--bone);
+}
+
+
+/* ---------- 14. Split cards ---------- */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 10px;
+}
+.split-card {
+  padding: 8px 10px;
+  border: 1px solid var(--night-3);
+  background: rgba(18, 23, 36, 0.7);
+}
+.split-card h4 {
+  margin: 0 0 4px;
+  font-family: var(--display);
+  font-size: 12px;
+  color: var(--gold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.split-card p {
+  font-size: 10.5px;
+  line-height: 1.4;
+  color: var(--ash);
+  margin: 0;
+}
+.split-card ul {
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  line-height: 1.45;
+  color: var(--parchment);
+}
+.split-card ul li::before {
+  content: "› ";
+  color: var(--gold);
+}
+
+
+/* ---------- 15. Boss skills ---------- */
+.skills {
+  display: grid;
+  gap: 3px;
+  margin-top: 6px;
+}
+.skill-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
+  padding: 4px 8px;
+  background: var(--night-2);
+  border-left: 2px solid var(--blood);
+  align-items: baseline;
+}
+.skill-row.final {
+  border-left-color: var(--gold);
+  background: linear-gradient(to right, rgba(212,168,74,0.12), var(--night-2));
+}
+.skill-row .n {
+  font-family: var(--display);
+  font-size: 11px;
+  color: var(--bone);
+  letter-spacing: 0.5px;
+}
+.skill-row .d {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--ash);
+}
+
+
+/* ---------- 16. Run loop flow ---------- */
+.flow {
+  display: flex;
+  align-items: stretch;
+  margin-top: 10px;
+}
+.flow-node {
+  flex: 1;
+  padding: 6px 4px;
+  background: var(--night-2);
+  border: 1px solid var(--night-3);
+  text-align: center;
+  font-family: var(--mono);
+}
+.flow-node + .flow-node { border-left: none; }
+.flow-node .n {
+  font-family: var(--display);
+  font-size: 12px;
+  color: var(--bone);
+  letter-spacing: 0.5px;
+}
+.flow-node .m {
+  font-size: 9px;
+  color: var(--ash);
+  margin-top: 2px;
+  letter-spacing: 0.8px;
+}
+.flow-node.hub  { background: linear-gradient(to bottom, rgba(139,107,255,0.15), var(--night-2)); border-color: var(--soul-deep); }
+.flow-node.boss { background: linear-gradient(to bottom, rgba(155,42,42,0.25), var(--night-2)); border-color: var(--blood); }
+
+
+/* ---------- 17. Unlocks ---------- */
+.unlocks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-top: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+}
+.unlock {
+  padding: 4px 7px;
+  background: var(--night-2);
+  border: 1px solid var(--night-3);
+  color: var(--parchment);
+}
+.unlock b { color: var(--bone); }
+.unlock.final {
+  grid-column: span 2;
+  background: linear-gradient(to right, rgba(139,107,255,0.18), var(--night-2));
+  border-color: var(--soul);
+  color: var(--bone);
+}
+
+
+/* ---------- 18. Footer ---------- */
+.foot {
+  grid-area: foot;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  padding-top: 14px;
+  border-top: 1px solid var(--gold-deep);
+}
+.teams {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.team .k {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.team .r {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--ash);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+.team .n {
+  font-family: var(--heading);
+  font-size: 11px;
+  color: var(--parchment);
+  line-height: 1.45;
+}
+.team .n .faint { color: var(--ash); }
+
+.course {
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--parchment);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  line-height: 1.8;
+  border: 1px solid rgba(212,168,74,0.32);
+  background: linear-gradient(180deg, rgba(24,14,8,0.5), rgba(14,10,8,0.35));
+  padding: 14px 16px 16px;
+  position: relative;
+  min-width: 200px;
+}
+.course::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(212,168,74,0.14);
+  pointer-events: none;
+}
+.course-seal {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.course .big {
+  font-family: var(--display);
+  font-size: 28px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 10px;
+  text-shadow: 0 0 12px rgba(212,168,74,0.25);
+}
+.course-line {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 1.5px;
+  color: var(--parchment);
+  line-height: 1.55;
+}
+.course-rule {
+  height: 1px;
+  background: linear-gradient(to left, var(--gold-deep), transparent);
+  margin: 9px 0 7px;
+}
+.course-foot {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 1.8px;
+  color: var(--ash);
+  line-height: 1.5;
+}
+
+
+/* ---------- 19. SVG decorations ---------- */
+.sword-bg {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.15;
+  z-index: 1;
+}
+.sword-bg path {
+  fill: var(--gold);
+  stroke: var(--gold-pale);
+  stroke-width: 0.5;
+}
+.splatter {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.7;
+}
+.splatter circle,
+.splatter path { fill: var(--blood); }
+
+
+/* ---------- 19.5 Design Pillars (hero) ---------- */
+.pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+.pillars-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.pillars-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.pillars-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--ash);
+  letter-spacing: 0.3px;
+}
+.pillars-head::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  align-self: center;
+  background: linear-gradient(to right, var(--gold-deep), transparent);
+}
+.pillar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.pillar-list li {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 10px;
+  row-gap: 1px;
+  padding: 6px 0 7px 0;
+  border-bottom: 1px solid rgba(212,168,74,0.12);
+}
+.pillar-list li:last-child { border-bottom: none; }
+.p-num {
+  grid-row: 1 / span 2;
+  font-family: var(--display);
+  font-size: 22px;
+  color: var(--soul);
+  letter-spacing: -1px;
+  line-height: 1;
+  align-self: start;
+  padding-top: 2px;
+  opacity: 0.85;
+}
+.p-title {
+  font-family: var(--heading);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--bone);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  line-height: 1;
+}
+.p-desc {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--parchment);
+  opacity: 0.88;
+  line-height: 1.35;
+  letter-spacing: 0.1px;
+}
+
+/* FS team mark — compact, sits under Design Pillars in hero column */
+.team-mark {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+  padding: 10px 14px 10px 10px;
+  border-top: 1px solid rgba(212,168,74,0.22);
+  border-bottom: 1px solid rgba(212,168,74,0.22);
+  background: linear-gradient(180deg, rgba(24,14,8,0.35), rgba(14,10,8,0.15));
+}
+.team-mark__logo {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border: 1px solid var(--gold-deep);
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.6),
+    0 0 14px rgba(0,0,0,0.55),
+    inset 0 0 20px rgba(0,0,0,0.35);
+  filter: contrast(1.06) brightness(1.03);
+  flex-shrink: 0;
+}
+.team-mark__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  line-height: 1;
+}
+.team-mark__kicker {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+}
+.team-mark__name {
+  font-family: var(--display);
+  font-size: 22px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--bone);
+  line-height: 1;
+  text-shadow: 0 0 10px rgba(212,168,74,0.18);
+}
+
+
+/* FS team logo stamp in footer course box */
+.fs-stamp {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(212,168,74,0.22);
+}
+.fs-stamp img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border: 1px solid var(--gold-deep);
+  filter: contrast(1.05) brightness(1.02);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.6);
+  flex-shrink: 0;
+}
+.fs-meta {
+  text-align: right;
+}
+.fs-name {
+  font-family: var(--display);
+  font-size: 15px;
+  color: var(--bone);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.fs-role {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  line-height: 1;
+}
+
+
+/* ---------- 21. Elden Ring–style decorations (additive, no layout) ---------- */
+.decorations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1; /* above bg textures, below content (.poster > * is z-index:2) */
+  color: var(--gold);
+}
+.decorations .deco {
+  position: absolute;
+  color: inherit;
+}
+
+/* Erdtree silhouette behind hero */
+.deco-tree {
+  left: 10px;
+  bottom: 120px;
+  width: 520px;
+  height: 900px;
+  color: var(--gold);
+  opacity: 0.055;
+  filter: drop-shadow(0 0 8px rgba(212,168,74,0.4));
+}
+
+/* Golden constellation field */
+.deco-stars {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--gold-pale);
+  opacity: 0.55;
+  filter: drop-shadow(0 0 3px rgba(232,205,136,0.8));
+}
+
+/* Four ornate corner filigrees (interior gold lines) */
+.deco-filigree {
+  width: 96px;
+  height: 96px;
+  color: var(--gold);
+  opacity: 0.42;
+  filter: drop-shadow(0 0 1px rgba(0,0,0,0.8));
+}
+.deco-filigree--tl { left: 46px;  top: 46px;    }
+.deco-filigree--tr { right: 46px; top: 46px;    transform: scaleX(-1); }
+.deco-filigree--bl { left: 46px;  bottom: 46px; transform: scaleY(-1); }
+.deco-filigree--br { right: 46px; bottom: 46px; transform: scale(-1,-1); }
+
+/* Great Rune seal — sits in empty spot above the team grid (bottom-left area of the poster is empty next to course box). Place in top-right-ish area above screenshots' gap. We'll place it near top-right inside the kicker band. */
+.deco-rune {
+  width: 88px;
+  height: 88px;
+  right: 92px;
+  top: 76px;
+  color: var(--gold);
+  opacity: 0.38;
+  filter: drop-shadow(0 0 6px rgba(212,168,74,0.35));
+  animation: runePulse 6s ease-in-out infinite;
+}
+@keyframes runePulse {
+  0%, 100% { opacity: 0.32; }
+  50%      { opacity: 0.48; }
+}
+
+/* Site-of-Grace golden wisp (bottom-left of hero column area — subtle) */
+.deco-grace {
+  left: 420px;
+  bottom: 240px;
+  width: 120px;
+  height: 200px;
+}
+.deco-grace__glow {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  width: 140px;
+  height: 140px;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(232,205,136,0.45) 0%, rgba(212,168,74,0.18) 30%, transparent 65%);
+  filter: blur(1px);
+  animation: graceFlicker 4s ease-in-out infinite;
+}
+.deco-grace__streak {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  width: 2px;
+  height: 170px;
+  transform: translateX(-50%);
+  background: linear-gradient(to top, rgba(232,205,136,0.55), rgba(212,168,74,0.2) 45%, transparent 90%);
+  filter: blur(0.6px);
+}
+@keyframes graceFlicker {
+  0%, 100% { opacity: 0.72; transform: translateX(-50%) scale(1); }
+  50%      { opacity: 1;    transform: translateX(-50%) scale(1.08); }
+}
+
+
+/* ---------- 20. Print ---------- */
+@media print {
+  @page { size: 48in 36in; margin: 0; }
+  html, body { background: #000; }
+  .stage { padding: 0; min-height: auto; }
+  .poster { box-shadow: none; }
+  .poster-wrap { transform: none !important; }
+}
