@@ -1153,17 +1153,4 @@ html, body {
     overflow: hidden !important;
   }
 
-  /* Web fonts (JetBrains Mono, Cormorant, Space Grotesk) sometimes render
-     slightly wider in Chrome's print pipeline than on screen. Let any flex /
-     grid track that holds text grow to fit its content instead of clipping
-     at the on-screen width. This fixes the "bottom row text overflows its
-     border" symptom in print without changing the on-screen layout. */
-  .course,
-  .course-line,
-  .course-foot,
-  .block p,
-  .pillars,
-  .pillar-list li {
-    min-width: max-content;
-  }
 }
