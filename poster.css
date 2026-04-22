@@ -31,12 +31,13 @@
   --blood-dark:#5e1818;
 
   /* Type */
-  --display: "Archivo Black", "Space Grotesk", system-ui, sans-serif;
+  --display: "Cinzel", "Cormorant Garamond", Georgia, serif;
+  --title:   "Cinzel Decorative", "Cinzel", "Cormorant Garamond", Georgia, serif;
   --heading: "Space Grotesk", system-ui, sans-serif;
   --body:    "Space Grotesk", system-ui, sans-serif;
   --serif:   "Cormorant Garamond", "EB Garamond", Georgia, serif;
   --hand:    "Caveat", "Kalam", cursive;
-  --mono:    "JetBrains Mono", ui-monospace, monospace;
+  --mono:    "IM Fell DW Pica", "JetBrains Mono", ui-monospace, monospace;
 }
 
 
@@ -187,24 +188,25 @@ html, body {
 }
 
 .hero-title {
-  font-family: var(--display);
-  font-weight: 900;
-  font-size: 108px;
-  line-height: 0.82;
-  letter-spacing: -3px;
+  font-family: var(--title);
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 0.9;
+  letter-spacing: 0.08em;
   color: var(--bone);
   text-transform: uppercase;
   margin: 0;
   text-shadow:
-    0 0 1px rgba(212,168,74,0.4),
+    0 0 1px rgba(212,168,74,0.5),
     0 3px 0 rgba(0,0,0,0.8),
-    0 0 60px rgba(139,107,255,0.08);
+    0 0 60px rgba(139,107,255,0.12);
 }
 .hero-title .slash {
   display: inline-block;
   color: var(--soul);
   transform: translate(-3px, 2px);
-  font-size: 84px;
+  font-size: 96px;
+  letter-spacing: 0;
 }
 
 .tagline {
@@ -247,9 +249,10 @@ html, body {
 }
 .facts .v {
   font-family: var(--display);
+  font-weight: 700;
   font-size: 26px;
   color: var(--bone);
-  letter-spacing: -0.5px;
+  letter-spacing: 0.04em;
   line-height: 1;
 }
 .facts .u {
@@ -318,13 +321,13 @@ html, body {
 
 .cell-hero {
   top: 0; left: 0;
-  width: 78%; height: 70%;
+  width: 61%; height: 57%;
   transform: rotate(-1.2deg);
   border: 2px solid var(--gold-deep);
   z-index: 3;
 }
 .cell-b {
-  top: 8%; right: -4%;
+  top: 8%; right: 2%;
   width: 34%; height: 32%;
   transform: rotate(3deg);
   z-index: 2;
