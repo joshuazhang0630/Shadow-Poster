@@ -1106,7 +1106,11 @@ html, body {
 
 /* ---------- 20. Print ---------- */
 @media print {
-  @page { size: 48in 36in; margin: 0; }
+  /* Print at the poster's natural CSS size (1920 × 1440 px = 20 × 15 in @ 96dpi).
+     The print shop scales the PDF to physical 48 × 36 in (2.4x). Doing the
+     scale on their RIP keeps text + SVG as vectors and avoids Chrome
+     rasterizing the whole page into a multi-megabyte bitmap. */
+  @page { size: 20in 15in; margin: 0; }
 
   /* Preserve background colors and background-images. Without this,
      browsers strip them to save ink, wiping panel fills and any
@@ -1116,15 +1120,20 @@ html, body {
     print-color-adjust: exact !important;
   }
 
-  html, body { background: #000; width: 48in; height: 36in; }
+  html, body {
+    background: #000;
+    margin: 0;
+    padding: 0;
+    width: 20in;
+    height: 15in;
+    overflow: hidden;        /* kills the phantom 2nd page from sub-pixel overflow */
+  }
   .stage { padding: 0; min-height: auto; display: block; }
   .poster { box-shadow: none; }
 
-  /* Poster canvas is 1920 × 1440 px (20 × 15 in @ 96dpi).
-     Scale up by 2.4 so it fills the 48 × 36 in @page exactly. */
+  /* Cancel the on-screen JS scale; print at 1:1. */
   .poster-wrap {
-    transform: scale(2.4) !important;
-    transform-origin: top left !important;
+    transform: none !important;
     width: 1920px !important;
     height: 1440px !important;
   }
