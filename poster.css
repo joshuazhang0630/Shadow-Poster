@@ -58,7 +58,7 @@ html, body {
   justify-content: center;
   padding: 30px 20px;
 }
-.poster-wrap { transform-origin: top center; }
+.poster-wrap { transform-origin: top left; }
 
 .poster {
   width: 1920px;
@@ -1107,8 +1107,25 @@ html, body {
 /* ---------- 20. Print ---------- */
 @media print {
   @page { size: 48in 36in; margin: 0; }
-  html, body { background: #000; }
-  .stage { padding: 0; min-height: auto; }
+
+  /* Preserve background colors and background-images. Without this,
+     browsers strip them to save ink, wiping panel fills and any
+     background-image hero shots. */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html, body { background: #000; width: 48in; height: 36in; }
+  .stage { padding: 0; min-height: auto; display: block; }
   .poster { box-shadow: none; }
-  .poster-wrap { transform: none !important; }
+
+  /* Poster canvas is 1920 × 1440 px (20 × 15 in @ 96dpi).
+     Scale up by 2.4 so it fills the 48 × 36 in @page exactly. */
+  .poster-wrap {
+    transform: scale(2.4) !important;
+    transform-origin: top left !important;
+    width: 1920px !important;
+    height: 1440px !important;
+  }
 }
