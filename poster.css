@@ -1162,4 +1162,20 @@ html, body {
   }
   .team .k { font-size: 9px !important; margin-bottom: 2px !important; }
   .team .r { font-size: 8px !important; margin-bottom: 3px !important; }
+
+  /* CSE 5912 course block on the right of the footer: in print the
+     display font + uppercase + letter-spacing makes "CSE 5912" and
+     "Game Design & Development" widen past both the outer border and
+     the inset gold border. Shrink everything inside .course and tighten
+     letter-spacing so the text sits comfortably within both frames. */
+  .course {
+    padding: 12px 14px 14px !important;
+    min-width: 0 !important;
+    line-height: 1.5 !important;
+  }
+  .course-seal { font-size: 9px !important; letter-spacing: 2px !important; margin-bottom: 6px !important; }
+  .course .big { font-size: 22px !important; letter-spacing: 1.4px !important; margin-bottom: 8px !important; }
+  .course-line { font-size: 8.5px !important; letter-spacing: 1.1px !important; }
+  .course-foot { font-size: 7.5px !important; letter-spacing: 1.3px !important; }
+  .course-rule { margin: 7px 0 5px !important; }
 }
