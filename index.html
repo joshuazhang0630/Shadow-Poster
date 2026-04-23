@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cinzel+Decorative:wght@700;900&family=Space+Grotesk:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500;1,700&family=Caveat:wght@500;700&family=IM+Fell+DW+Pica:ital@0;1&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="poster.css?v=20"/>
+<link rel="stylesheet" href="poster.css?v=34"/>
 </head>
 <body>
 <div class="stage">
@@ -237,6 +237,29 @@
         </div>
       </div>
 
+      <!-- Crew -->
+      <div class="hero-credits">
+        <div class="credits-head">
+          <span class="credits-label">Crew</span>
+          <span class="credits-sub">three teams</span>
+        </div>
+        <div class="credit-team">
+          <div class="ct-k">Core Gameplay</div>
+          <div class="ct-r">Player · Combat · Architecture</div>
+          <div class="ct-n">Joshua Zhang · Aidan Roley · Daoping Huang</div>
+        </div>
+        <div class="credit-team">
+          <div class="ct-k">Content &amp; Level</div>
+          <div class="ct-r">Enemies · Rooms · Boss · Levels</div>
+          <div class="ct-n">Ben Wirantana · Abdirahman Nur · Zurui Zeng</div>
+        </div>
+        <div class="credit-team">
+          <div class="ct-k">UI &amp; Effects</div>
+          <div class="ct-r">HUD · Menus · VFX</div>
+          <div class="ct-n">Yuchen · Gohoon</div>
+        </div>
+      </div>
+
       <div class="facts">
         <div><div class="k">View</div><div class="v">2.5D<span class="u"> ISO</span></div></div>
         <div><div class="k">Floors</div><div class="v">3<span class="u"> levels</span></div></div>
@@ -268,20 +291,13 @@
         <p>A discipline of timing. The 4-hit chain forgets itself after <em>0.75s</em> of stillness. A clean parry opens a <em>1.1s</em> counter window; a strike within it deals <b>999</b>.</p>
         <div class="keys">
           <span class="keycap wide">WASD</span><span class="lbl">Move <small>cursor-relative</small></span>
-          <span class="keycap mouse">Aim</span><span class="lbl">Mouse cursor</span>
           <span class="keycap mouse">LMB</span><span class="lbl">Light · 4-hit combo</span>
           <span class="keycap mouse">LMB+</span><span class="lbl">Charged Slash <small>hold &gt;0.3s</small></span>
           <span class="keycap">F</span><span class="lbl">Heavy · multi-hit</span>
           <span class="keycap">Ctrl</span><span class="lbl">Dash <small>i-frames</small></span>
-          <span class="keycap mouse">LMB</span><span class="lbl">Dash Attack <small>during Dash</small></span>
-          <span class="keycap">F</span><span class="lbl">Slide Attack <small>during Dash</small></span>
-          <span class="keycap">V</span><span class="lbl">Push Kick <small>knockback</small></span>
-          <span class="keycap">R</span><span class="lbl">Kunai Throw</span>
-          <span class="keycap">B</span><span class="lbl">Bomb Throw <small>AoE</small></span>
-          <span class="keycap mouse">RMB</span><span class="lbl">Guard <small>hold · block all</small></span>
+          <span class="keycap mouse">RMB</span><span class="lbl">Guard <small>block all</small></span>
           <span class="keycap">E</span><span class="lbl">Parry <small>reflect + counter</small></span>
-          <span class="keycap">Q</span><span class="lbl">Bullet Time <small>hold</small></span>
-          <span class="keycap">Esc</span><span class="lbl">Pause</span>
+          <span class="keycap">Q</span><span class="lbl">Bullet Time</span>
         </div>
         <div class="stats">
           <div class="stat"><div class="k">Parry</div><div class="v">0.75<span class="u">s</span></div></div>
@@ -294,7 +310,7 @@
       <!-- COLLAGE (CENTER, 2x2) -->
       <div class="collage">
         <div class="cell cell-hero">
-          <img src="assets/boss-fight.png" alt="Boss encounter" style="width: 432px; height: 500px"/>
+          <img src="assets/boss-fight.png" alt="Boss encounter" style="width: 340px; height: 382px"/>
           <div class="cap">The Keeper · 450 HP · Floor 2</div>
         </div>
         <div class="cell cell-b">
@@ -302,7 +318,7 @@
           <div class="cap">The Shipwreck · Crimson Dawn</div>
         </div>
         <div class="cell cell-c">
-          <img src="assets/upgrade.png" alt="Upgrade draft" style="object-fit: cover; width: 429px; height: 394px; padding: 0px 80px 0px 0px;"/>
+          <img src="assets/upgrade.png" alt="Upgrade draft" style="object-fit: cover; width: 330px; height: 300px; padding: 0px 60px 0px 0px;"/>
           <div class="cap">Three Offered · One Taken</div>
         </div>
         <div class="cell cell-d">
@@ -366,9 +382,8 @@
           <div class="split-card">
             <h4>Sample Affixes</h4>
             <ul>
-              <li><b>Vampiric Parry</b> — heal 10 on parry</li>
-              <li><b>Berserker</b> — +35% dmg &lt;30% HP</li>
-              <li><b>Ember Blade</b> — Fire on hit</li>
+              <li><b>Vampiric Parry</b> — heal 10</li>
+              <li><b>Berserker</b> — +35% &lt;30% HP</li>
               <li><b>Executioner</b> — &lt;15% = kill</li>
             </ul>
           </div>
@@ -407,11 +422,6 @@
             <ul><li>×1.5 HP · ×1.3 DMG</li><li>Boss at Goal</li></ul>
           </div>
         </div>
-        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-top:8px; font-family:var(--mono); font-size:10px;">
-          <div style="padding:5px 7px; background:var(--night-2); border-left:2px solid var(--gold);"><b style="color:var(--gold);">×3</b> Elite · Rare+</div>
-          <div style="padding:5px 7px; background:var(--night-2); border-left:2px solid var(--gold);"><b style="color:var(--gold);">×5</b> Merchant</div>
-          <div style="padding:5px 7px; background:var(--night-2); border-left:2px solid var(--gold);"><b style="color:var(--gold);">×8</b> Rest · +35%</div>
-        </div>
       </section>
 
       <!-- BLOCK D · The Hunted (enemies only) -->
@@ -425,19 +435,15 @@
         <div class="enemy-pills">
           <span class="pill"><b>Basic</b><span class="hp">50</span></span>
           <span class="pill"><b>Tank</b><span class="hp">100</span></span>
-          <span class="pill"><b>RangeT</b><span class="hp">50</span></span>
           <span class="pill"><b>Ranged</b><span class="hp">50</span></span>
-          <span class="pill"><b>Charger</b><span class="hp">50</span></span>
         </div>
-        <div style="margin-top:10px; font-family:var(--mono); font-size:9px; color:var(--gold-pale); letter-spacing:1px; text-transform:uppercase;">5-state AI</div>
+        <div style="margin-top:10px; font-family:var(--mono); font-size:13px; color:var(--gold); letter-spacing:1.5px; text-transform:uppercase;">4-state AI</div>
         <div class="skills">
-          <div class="skill-row"><span class="n">Idle</span><span class="d">patrol · listen</span></div>
           <div class="skill-row"><span class="n">Alert</span><span class="d">line-of-sight</span></div>
           <div class="skill-row"><span class="n">Chase</span><span class="d">close gap</span></div>
-          <div class="skill-row"><span class="n">Attack</span><span class="d">combo · wind-up</span></div>
-          <div class="skill-row final"><span class="n">Retreat</span><span class="d">&lt;30% HP</span></div>
+          <div class="skill-row final"><span class="n">Attack</span><span class="d">combo · wind-up</span></div>
         </div>
-        <div style="margin-top:8px; padding:6px 8px; background:var(--night-2); border-left:2px solid var(--gold); font-family:var(--mono); font-size:10px; color:var(--parchment);">
+        <div style="margin-top:10px; padding:9px 13px; background:var(--night-2); border-left:2px solid var(--gold); font-family:var(--mono); font-size:15.5px; color:var(--parchment);">
           Floor 2 · <b style="color:var(--gold);">×1.5 HP</b> · <b style="color:var(--gold);">×1.3 DMG</b>
         </div>
       </section>
@@ -452,27 +458,24 @@
         <p>The dungeon's last warden. The <b>melee form</b> closes with three dash variants; the <b>ranged form</b> patterns the floor on a <em>6s</em> cycle. <b>450 HP</b>; phase shift at <b>70%</b>.</p>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:10px;">
           <div>
-            <div style="font-family:var(--mono); font-size:9px; color:var(--blood); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:6px; border-bottom:1px solid var(--blood-dark); padding-bottom:4px;">⚔ Melee Form</div>
+            <div style="font-family:var(--mono); font-size:14.5px; color:var(--blood); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:7px; border-bottom:1px solid var(--blood-dark); padding-bottom:5px;">⚔ Melee Form</div>
             <div class="skills">
-              <div class="skill-row"><span class="n">Short Dash</span><span class="d">single strike · fast recovery</span></div>
               <div class="skill-row"><span class="n">Triple Dash</span><span class="d">3-hit pressure chain</span></div>
-              <div class="skill-row final"><span class="n">Long Dash</span><span class="d">5-strike gap-closer · parry or die</span></div>
+              <div class="skill-row final"><span class="n">Long Dash</span><span class="d">5-strike gap-closer</span></div>
             </div>
           </div>
           <div>
-            <div style="font-family:var(--mono); font-size:9px; color:var(--soul); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:6px; border-bottom:1px solid var(--soul-deep); padding-bottom:4px;">Ranged Form · 6s cycle</div>
+            <div style="font-family:var(--mono); font-size:14.5px; color:var(--soul); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:7px; border-bottom:1px solid var(--soul-deep); padding-bottom:5px;">Ranged Form · 6s cycle</div>
             <div class="skills">
-              <div class="skill-row"><span class="n">Burst</span><span class="d">1.2s charge · single bolt</span></div>
               <div class="skill-row"><span class="n">Cone</span><span class="d">7 bullets · 60° fan</span></div>
               <div class="skill-row final"><span class="n">360 Nova</span><span class="d">12 bullets × 5 rounds</span></div>
             </div>
           </div>
         </div>
-        <div style="margin-top:10px; display:grid; grid-template-columns:repeat(4,1fr); gap:6px; font-family:var(--mono); font-size:10px;">
-          <div style="padding:5px 7px; background:var(--night-2); border-left:2px solid var(--blood);"><b style="color:var(--bone);">450</b> <span style="color:var(--ash);">HP</span></div>
-          <div style="padding:5px 7px; background:var(--night-2); border-left:2px solid var(--gold);"><b style="color:var(--bone);">2</b> <span style="color:var(--ash);">phases</span></div>
-          <div style="padding:5px 7px; background:var(--night-2); border-left:2px solid var(--soul);"><b style="color:var(--bone);">6s</b> <span style="color:var(--ash);">cycle</span></div>
-          <div style="padding:5px 7px; background:var(--night-2); border-left:2px solid var(--gold-deep);"><b style="color:var(--bone);">Floor 2&3</b></div>
+        <div style="margin-top:10px; display:grid; grid-template-columns:repeat(3,1fr); gap:6px; font-family:var(--mono); font-size:15px;">
+          <div style="padding:8px 12px; background:var(--night-2); border-left:2px solid var(--blood);"><b style="color:var(--bone);">450</b> <span style="color:var(--ash);">HP</span></div>
+          <div style="padding:8px 12px; background:var(--night-2); border-left:2px solid var(--gold);"><b style="color:var(--bone);">2</b> <span style="color:var(--ash);">phases</span></div>
+          <div style="padding:8px 12px; background:var(--night-2); border-left:2px solid var(--soul);"><b style="color:var(--bone);">6s</b> <span style="color:var(--ash);">cycle</span></div>
         </div>
       </section>
 
@@ -484,22 +487,19 @@
           <span class="block-sub">Soul Shards</span>
         </div>
         <p>Every run pays tribute. <em>Soul Shards</em> persist across deaths; gold does not.</p>
-        <div style="margin-top:6px; padding:8px 10px; background:linear-gradient(to right, rgba(139,107,255,0.15), var(--night-2)); border:1px solid var(--soul-deep); font-family:var(--mono); font-size:11px; color:var(--bone); text-align:center; letter-spacing:0.5px;">
+        <div style="margin-top:9px; padding:11px 15px; background:linear-gradient(to right, rgba(91,58,158,0.18), var(--night-2)); border:1px solid var(--soul-deep); font-family:var(--mono); font-size:16px; color:var(--bone); text-align:center; letter-spacing:0.5px;">
           SHARDS = (rm × 3) + (kills) + <span style="color:var(--gold);">30</span>
         </div>
         <div class="unlocks">
           <div class="unlock"><b>20◆</b> +10 HP</div>
           <div class="unlock"><b>30◆</b> Ember Blade</div>
-          <div class="unlock"><b>30◆</b> Frost Edge</div>
-          <div class="unlock"><b>40◆</b> 50g Start</div>
-          <div class="unlock final"><b>80◆</b> Executioner unlock</div>
+          <div class="unlock final"><b>80◆</b> Executioner</div>
         </div>
-        <div style="margin-top:8px; font-family:var(--mono); font-size:9px; color:var(--gold-pale); letter-spacing:1px; text-transform:uppercase;">Merchant · gold resets</div>
+        <div style="margin-top:12px; font-family:var(--mono); font-size:13px; color:var(--gold); letter-spacing:1.5px; text-transform:uppercase;">Merchant · gold resets</div>
         <div class="unlocks" style="margin-top:4px;">
           <div class="unlock"><b>25g</b> Potion +30</div>
           <div class="unlock"><b>45g</b> Large +60</div>
-          <div class="unlock"><b>20g</b> Stamina</div>
-          <div class="unlock"><b>50g</b> Random</div>
+          <div class="unlock"><b>20g</b> Stamina pot</div>
         </div>
       </section>
 
@@ -507,45 +507,13 @@
 
     <!-- FOOTER -->
     <footer class="foot">
-      <div class="teams">
-        <div class="team">
-          <div class="k">Team A · Core Gameplay</div>
-          <div class="r">Player · Combat · Architecture</div>
-          <div class="n">
-            Joshua Zhang<br/>
-            Aidan Roley<br/>
-            Daoping Huang
-          </div>
-        </div>
-        <div class="team">
-          <div class="k">Team B · Content &amp; Level</div>
-          <div class="r">Enemies · Rooms · Boss · Levels</div>
-          <div class="n">
-            Ben Wirantana<br/>
-            Abdirahman Nur<br/>
-            Zurui Zeng
-          </div>
-        </div>
-        <div class="team">
-          <div class="k">Team C · UI &amp; Effects</div>
-          <div class="r">HUD · Menus · VFX</div>
-          <div class="n">
-            Yuchen<br/>
-            Gohoon
-          </div>
-        </div>
+      <div class="foot-mark">
+        <div class="foot-mark__sub">The Ohio State University · Spring 2026</div>
       </div>
       <div class="course">
         <div class="course-seal">Capstone</div>
         <div class="big">CSE 5912</div>
-        <div class="course-line">
-</div>
-        <div class="course-line">
-</div>
-        <div class="course-line">Game Dev</div>
         <div class="course-rule"></div>
-        <div class="course-foot">
-</div>
       </div>
     </footer>
 
